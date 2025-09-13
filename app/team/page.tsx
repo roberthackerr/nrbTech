@@ -24,8 +24,8 @@ export default function TeamPage() {
       image: "/amoros.jpg",
       skills: ["Next js", "Node js","Express js","React js","JavaFX" , "PostgreSQL","UI / UX Design","Tailwind CSS"],
       email: "herllandysamoroschristy@gmail.com",
-      linkedin: "https://www.linkedin.com/in/herllandys-amoros-christy-razafimandimby",
-      github: "#",
+      linkedin: "https://www.linkedin.com/in/herllandys-amoros-christy-b761a8350/",
+      github: "https://github.com/DidisGamos",
     },
     {
       name: "RASOLOMANDIMBY Tafita Nantenaina",
