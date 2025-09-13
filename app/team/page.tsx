@@ -33,7 +33,7 @@ export default function TeamPage() {
       bio: "Web Developer et expert en Télécommunication ",
       image: "/Nantenaina.jpg",
       skills: ["Télécoms","Informatique"],
-      email: "tafitanantenaina@gmail.com",
+      email: "tafitanantenaina.ras@gmail.com",
       linkedin: "#",
       github: "#",
     },
