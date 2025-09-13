@@ -8,7 +8,7 @@ import { Navigation } from "@/components/navigation"
 export default function TeamPage() {
   const team = [
     {
-      name: "RAZAFIMANDIMBY Tojo Herifatahina Robertolinos",
+      name: "RAZAFIMANDIMBY Tojo Herifaratahina Robertolinos",
       role: "CEO & Fondateur",
       bio: "Expert en télécommunications et informatique avec plus de 3 ans d'expérience dans l'industrie tech.",
       image: "/Robertolinos.jpg",
@@ -17,10 +17,20 @@ export default function TeamPage() {
       linkedin: "#",
       github: "#",
     },
+       {
+      name: "RAZAFIMANDIMBY Herllandys Amoros Christy",
+      role: "Developer Fullstack",
+      bio: "Web, Desktop and Mobile Developer",
+      image: "/amoros.jpg",
+      skills: ["Next js", "Node js","Express js","React js","JavaFX" , "PostgreSQL","UI / UX Design","Tailwind CSS"],
+      email: "herllandysamoroschristy@gmail.com",
+      linkedin: "https://www.linkedin.com/in/herllandys-amoros-christy-razafimandimby",
+      github: "#",
+    },
     {
       name: "RASOLOMANDIMBY Tafita Nantenaina",
       role: "Developer",
-      bio: "Spécialiste en cybersécurité et architecture cloud, ancienne consultante chez des grandes entreprises.",
+      bio: "Web Developer et expert en Télécommunication ",
       image: "/Nantenaina.jpg",
       skills: ["Télécoms","Informatique"],
       email: "tafitanantenaina@gmail.com",
@@ -29,14 +39,24 @@ export default function TeamPage() {
     },
     {
       name: "RAMAROSON Sitrakiniaina Mbolatiana",
-      role: "Lead Developer IA",
-      bio: "Docteur en Intelligence Artificielle, expert en machine learning et deep learning.",
+      role: " Developer Python",
+      bio: "Web Developer et expert en Télécommunication ",
       image: "/ai-developer-portrait.png",
-      skills: ["IA/ML", "Python", "TensorFlow", "Data Science"],
-      email: "ahmed@nrbtech.com",
+      skills: ["Html","Css","Python","Mysql","MERN"],
+      email: "",
       linkedin: "#",
       github: "#",
     },
+    {
+      name: "RANJANIRINA Rahaja",
+      role: "Developer PHP",
+      bio: "Web Developer",
+      image: "/Rahaja.jpg",
+      skills: ["Html","Css","Laravel","Python","Mysql","Sql"],
+      email: "rahaja.ranjanirina@gmail.com",
+      linkedin: "#",
+      github: "#",
+    }
   ]
 
   return (
