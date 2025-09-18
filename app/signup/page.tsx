@@ -53,7 +53,7 @@ export default function SignupPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100">
       <Navigation />
 
-      <div className="container mx-auto px-4 py-20">
+      <div className="container mx-auto px-4 py-20 sigp">
         <div className="max-w-md mx-auto">
           <Card className="glass-card border-0 shadow-2xl">
             <CardHeader className="text-center space-y-4">

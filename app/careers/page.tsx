@@ -5,70 +5,70 @@ import { MapPin, Clock, Briefcase, Mail, ArrowRight } from "lucide-react"
 
 export default function CareersPage() {
   const jobs = [
+    // {
+    //   title: "Développeur Full-Stack Senior",
+    //   department: "Développement",
+    //   location: "Paris / Remote",
+    //   type: "CDI",
+    //   experience: "5+ ans",
+    //   description:
+    //     "Rejoignez notre équipe pour développer des applications web innovantes avec React, Node.js et les dernières technologies cloud.",
+    //   skills: ["React", "Node.js", "TypeScript", "AWS", "Docker"],
+    //   salary: "55-70k€",
+    // },
+    // {
+    //   title: "Expert Cybersécurité",
+    //   department: "Cybersécurité",
+    //   location: "Lyon / Hybride",
+    //   type: "CDI",
+    //   experience: "3+ ans",
+    //   description:
+    //     "Menez des audits de sécurité, implémentez des solutions de protection et accompagnez nos clients dans leur sécurisation.",
+    //   skills: ["Pentest", "CISSP", "ISO 27001", "SIEM", "Forensic"],
+    //   salary: "50-65k€",
+    // },
+    // {
+    //   title: "Ingénieur IA/ML",
+    //   department: "Intelligence Artificielle",
+    //   location: "Remote",
+    //   type: "CDI",
+    //   experience: "4+ ans",
+    //   description:
+    //     "Développez des modèles d'IA avancés et des solutions de machine learning pour nos clients dans divers secteurs.",
+    //   skills: ["Python", "TensorFlow", "PyTorch", "MLOps", "Computer Vision"],
+    //   salary: "60-75k€",
+    // },
+    // {
+    //   title: "Architecte Télécoms",
+    //   department: "Télécommunications",
+    //   location: "Marseille",
+    //   type: "CDI",
+    //   experience: "7+ ans",
+    //   description: "Concevez et déployez des infrastructures télécoms de nouvelle génération, incluant la 5G et l'IoT.",
+    //   skills: ["5G", "Network Design", "Cisco", "Huawei", "IoT"],
+    //   salary: "65-80k€",
+    // },
+    // {
+    //   title: "Consultant Junior",
+    //   department: "Conseil",
+    //   location: "Multi-sites",
+    //   type: "CDI",
+    //   experience: "0-2 ans",
+    //   description:
+    //     "Accompagnez nos consultants seniors dans l'analyse des besoins clients et la mise en œuvre de solutions tech.",
+    //   skills: ["Analyse", "Communication", "Gestion de projet", "Curiosité"],
+    //   salary: "35-45k€",
+    // },
     {
-      title: "Développeur Full-Stack Senior",
-      department: "Développement",
-      location: "Paris / Remote",
-      type: "CDI",
-      experience: "5+ ans",
+      title: "Disponible plus tard",
+      department: "",
+      location: "Madagascar",
+      type: "",
+      experience: "",
       description:
-        "Rejoignez notre équipe pour développer des applications web innovantes avec React, Node.js et les dernières technologies cloud.",
-      skills: ["React", "Node.js", "TypeScript", "AWS", "Docker"],
-      salary: "55-70k€",
-    },
-    {
-      title: "Expert Cybersécurité",
-      department: "Cybersécurité",
-      location: "Lyon / Hybride",
-      type: "CDI",
-      experience: "3+ ans",
-      description:
-        "Menez des audits de sécurité, implémentez des solutions de protection et accompagnez nos clients dans leur sécurisation.",
-      skills: ["Pentest", "CISSP", "ISO 27001", "SIEM", "Forensic"],
-      salary: "50-65k€",
-    },
-    {
-      title: "Ingénieur IA/ML",
-      department: "Intelligence Artificielle",
-      location: "Remote",
-      type: "CDI",
-      experience: "4+ ans",
-      description:
-        "Développez des modèles d'IA avancés et des solutions de machine learning pour nos clients dans divers secteurs.",
-      skills: ["Python", "TensorFlow", "PyTorch", "MLOps", "Computer Vision"],
-      salary: "60-75k€",
-    },
-    {
-      title: "Architecte Télécoms",
-      department: "Télécommunications",
-      location: "Marseille",
-      type: "CDI",
-      experience: "7+ ans",
-      description: "Concevez et déployez des infrastructures télécoms de nouvelle génération, incluant la 5G et l'IoT.",
-      skills: ["5G", "Network Design", "Cisco", "Huawei", "IoT"],
-      salary: "65-80k€",
-    },
-    {
-      title: "Consultant Junior",
-      department: "Conseil",
-      location: "Multi-sites",
-      type: "CDI",
-      experience: "0-2 ans",
-      description:
-        "Accompagnez nos consultants seniors dans l'analyse des besoins clients et la mise en œuvre de solutions tech.",
-      skills: ["Analyse", "Communication", "Gestion de projet", "Curiosité"],
-      salary: "35-45k€",
-    },
-    {
-      title: "DevOps Engineer",
-      department: "Infrastructure",
-      location: "Remote",
-      type: "CDI",
-      experience: "3+ ans",
-      description:
-        "Automatisez les déploiements, gérez l'infrastructure cloud et optimisez les performances de nos applications.",
-      skills: ["Kubernetes", "Terraform", "CI/CD", "Monitoring", "Cloud"],
-      salary: "50-65k€",
+        "à plus tard",
+     skills: [] ,
+      salary: "",
     },
   ]
 

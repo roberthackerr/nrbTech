@@ -40,7 +40,7 @@
   --sidebar-ring: oklch(0.45 0.15 220 / 0.5);
 }
 
-.dark {
+.dark{
   /* Updated dark mode tokens for professional tech aesthetic */
   --background: oklch(0.08 0 0);
   --foreground: oklch(0.95 0 0);
@@ -144,7 +144,7 @@
   border: 1px solid oklch(0.9 0 0 / 0.2);
 }
 
-.dark .glass-effect {
+.dark .glass-effect .sigp {
   background: oklch(0.12 0 0 / 0.8);
   border: 1px solid oklch(0.2 0 0 / 0.2);
 }

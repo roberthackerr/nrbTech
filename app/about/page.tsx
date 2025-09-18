@@ -33,29 +33,29 @@ export default function AboutPage() {
 
   const team = [
     {
-      name: "Nicolas Rousseau",
+      name: "Herifaratahina Robertolinos",
       role: "CEO & Fondateur",
       expertise: "Stratégie Tech & Leadership",
-      experience: "15+ ans",
+      experience: "3+ ans",
     },
     {
-      name: "Rachel Bernard",
+      name: "Herllandys Amoros Christy",
       role: "CTO",
       expertise: "Architecture & Développement",
-      experience: "12+ ans",
+      experience: "2+ ans",
     },
-    {
-      name: "Thomas Chen",
-      role: "Directeur Cybersécurité",
-      expertise: "Sécurité & Conformité",
-      experience: "10+ ans",
-    },
+    // {
+    //   name: "Thomas Chen",
+    //   role: "Directeur Cybersécurité",
+    //   expertise: "Sécurité & Conformité",
+    //   experience: "10+ ans",
+    // },
   ]
 
   const achievements = [
-    { metric: "150+", label: "Projets réalisés" },
-    { metric: "50+", label: "Clients satisfaits" },
-    { metric: "8 ans", label: "D'expérience" },
+    { metric: "50+", label: "Projets réalisés" },
+    { metric: "10+", label: "Clients satisfaits" },
+    { metric: "2 ans", label: "D'expérience" },
     { metric: "99.9%", label: "Disponibilité" },
   ]
 
@@ -81,7 +81,7 @@ export default function AboutPage() {
                 <span className="text-primary block">NRBTech</span>
               </h1>
               <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto text-pretty">
-                Depuis 2016, nous accompagnons les entreprises dans leur transformation digitale avec des solutions
+                Depuis 2024, nous accompagnons les entreprises dans leur transformation digitale avec des solutions
                 technologiques innovantes et sur mesure.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -228,7 +228,7 @@ export default function AboutPage() {
                     <Building className="h-12 w-12 text-primary mx-auto mb-4" />
                     <h3 className="font-semibold text-foreground mb-2">Entreprise Française</h3>
                     <p className="text-sm text-muted-foreground">
-                      Basée à Paris, nous respectons la réglementation française
+                      Basée à Madagascar, nous respectons la réglementation Malgache
                     </p>
                   </CardContent>
                 </Card>

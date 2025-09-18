@@ -39,7 +39,13 @@ export default function DevelopmentPage() {
     { name: "Python/Django", category: "Backend", color: "bg-yellow-500" },
     { name: "React Native", category: "Mobile", color: "bg-purple-500" },
     { name: "PostgreSQL", category: "Database", color: "bg-indigo-500" },
-    { name: "AWS/Azure", category: "Cloud", color: "bg-orange-500" },
+    { name: "Laravel", category: "Backend", color: "bg-orange-500" },
+    { name: "Python", category: "Desktop/DataScience", color: "bg-orange-500" },
+    { name: "Java Desktop (Swing / javaFX)", category: "Desktop", color: "bg-green-800" },
+    { name: "Spring Boot", category: "Backend", color: "bg-red-500" },
+    { name: "MERN", category: "Backend/frontend/Database", color: "bg-blue-500" },
+    { name: "MongoDB", category: "Database", color: "bg-orange-700" },
+    { name: "Next.js", category: "Backend", color: "bg-red-800" },
   ]
 
   const process = [
@@ -61,9 +67,9 @@ export default function DevelopmentPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="flex items-center space-x-2 mb-4">
+                <div className="flex items-center space-x-2 mb-4 ">
                   <Code className="h-8 w-8 text-primary" />
-                  <span className="text-primary font-semibold">Développement</span>
+                  <span className="text-primary font-semibold text-2xl">Développement</span>
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
                   Applications

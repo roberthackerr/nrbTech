@@ -80,7 +80,7 @@ export function ProjectsSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4 text-balance">Nos Réalisations</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto  text-pretty">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto text-pretty">
             Découvrez quelques-uns de nos projets les plus innovants qui ont transformé les activités de nos clients
             dans différents secteurs technologiques.
           </p>

@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Shield, Cpu, Wifi, Code, Mail, Phone, MapPin } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   return (
@@ -9,8 +10,14 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">N</span>
+              <div className="w-8 h-8  rounded-lg flex items-center justify-center">
+                 <Image
+                                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_4_sept._2025__09_07_19-removebg-preview-XjBwlfJuA9h3NPNX9pOnuLwnfL5Mmb.png"
+                                alt="NRBTech Logo"
+                                width={30}
+                                height={30}
+                                className="object-contain"
+                              />
               </div>
               <span className="text-xl font-bold text-card-foreground">NRBTech</span>
             </div>
@@ -25,7 +32,7 @@ export function Footer() {
             </div>
             <div className="flex items-center text-sm text-muted-foreground">
               <Mail className="h-4 w-4 mr-2" />
-              contact@nrbtech.fr
+              contact@nrbtech.com
             </div>
           </div>
 

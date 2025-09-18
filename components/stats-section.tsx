@@ -2,8 +2,8 @@ import { Card, CardContent } from "@/components/ui/card"
 
 export function StatsSection() {
   const stats = [
-    { number: "150+", label: "Projets réalisés" },
-    { number: "50+", label: "Clients satisfaits" },
+    { number: "50+", label: "Projets réalisés" },
+    { number: "10+", label: "Clients satisfaits" },
     { number: "24/7", label: "Support technique" },
     { number: "99.9%", label: "Disponibilité" },
   ]
