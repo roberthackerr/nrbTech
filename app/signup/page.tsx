@@ -14,6 +14,7 @@ import Link from "next/link"
 import { useState } from "react"
 
 export default function SignupPage() {
+    const [error, setError] = useState("")
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -25,24 +26,50 @@ export default function SignupPage() {
   })
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleSignup = async (e: React.FormEvent) => {
+ const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError("")
+    
     if (formData.password !== formData.confirmPassword) {
-      alert("Les mots de passe ne correspondent pas")
+      setError("Les mots de passe ne correspondent pas")
       return
     }
     if (!formData.acceptTerms) {
-      alert("Veuillez accepter les conditions d'utilisation")
+      setError("Veuillez accepter les conditions d'utilisation")
       return
     }
 
     setIsLoading(true)
-    // Simulate signup process
-    setTimeout(() => {
+
+    try {
+      const response = await fetch("/api/auth/singup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          password: formData.password,
+          company: formData.company,
+        }),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        // Redirect to login page with success message
+        window.location.href = "/login?message=Compte créé avec succès. Veuillez vous connecter."
+      } else {
+        setError(result.message || "Erreur lors de la création du compte")
+      }
+    } catch (error) {
+      setError("Erreur de connexion au serveur")
+      console.error("Signup error:", error)
+    } finally {
       setIsLoading(false)
-      // Redirect to dashboard or welcome page
-      window.location.href = "/dashboard"
-    }, 2000)
+    }
   }
 
   const updateFormData = (field: string, value: string | boolean) => {
@@ -77,6 +104,11 @@ export default function SignupPage() {
               <form onSubmit={handleSignup} className="space-y-4">
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-2">
+                      {error && (
+    <div className="bg-red-50 text-red-700 p-3 rounded-md text-sm">
+      {error}
+    </div>
+  )}
                     <Label htmlFor="firstName">Prénom</Label>
                     <Input
                       id="firstName"

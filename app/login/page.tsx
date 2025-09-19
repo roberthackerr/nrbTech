@@ -13,19 +13,43 @@ import Link from "next/link"
 import { useState } from "react"
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("")
+const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError("")
     setIsLoading(true)
-    // Simulate login process
-    setTimeout(() => {
+
+    try {
+      const response = await fetch("/api/auth/singin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        // Save token to localStorage
+        localStorage.setItem("token", result.token)
+        localStorage.setItem("user", JSON.stringify(result.user))
+        
+        // Redirect to dashboard
+        window.location.href = "/dashboard"
+      } else {
+        setError(result.message || "Erreur lors de la connexion")
+      }
+    } catch (error) {
+      setError("Erreur de connexion au serveur")
+      console.error("Login error:", error)
+    } finally {
       setIsLoading(false)
-      // Redirect to dashboard or home
-      window.location.href = "/dashboard"
-    }, 1500)
+    }
   }
 
   return (
@@ -53,6 +77,11 @@ export default function LoginPage() {
             </CardHeader>
 
             <CardContent className="space-y-6">
+                {error && (
+                <div className="bg-red-50 text-red-700 p-3 rounded-md text-sm">
+                  {error}
+                </div>
+              )}
               <form onSubmit={handleLogin} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
