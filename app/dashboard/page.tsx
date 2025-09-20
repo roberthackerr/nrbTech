@@ -5,12 +5,16 @@ import { VisitorChart } from "@/components/dashboard/visitor-chart"
 import { TrafficSources } from "@/components/dashboard/traffic-sources"
 import { PopularPages } from "@/components/dashboard/popular-pages"
 import { RecentVisitors } from "@/components/dashboard/recent-visitors"
+import { WelcomePopup } from "@/components/welcome-popup"
 import { BarChart3 } from "lucide-react"
 
 export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-muted/30">
       <Navigation />
+      
+      {/* Ajout du popup de bienvenue */}
+      <WelcomePopup />
 
       <main className="py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
