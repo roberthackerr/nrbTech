@@ -60,6 +60,7 @@ export default function SignupPage() {
 
       if (result.success) {
         // Redirect to login page with success message
+        alert("connection réussie")
         window.location.href = "/login?message=Compte créé avec succès. Veuillez vous connecter."
       } else {
         setError(result.message || "Erreur lors de la création du compte")
@@ -99,16 +100,15 @@ export default function SignupPage() {
               </CardTitle>
               <CardDescription className="text-gray-600">Rejoignez la communauté NRBTech</CardDescription>
             </CardHeader>
-
-            <CardContent className="space-y-6">
-              <form onSubmit={handleSignup} className="space-y-4">
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="space-y-2">
-                      {error && (
+                              {error && (
     <div className="bg-red-50 text-red-700 p-3 rounded-md text-sm">
       {error}
     </div>
   )}
+            <CardContent className="space-y-6">
+              <form onSubmit={handleSignup} className="space-y-4">
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-2">
                     <Label htmlFor="firstName">Prénom</Label>
                     <Input
                       id="firstName"

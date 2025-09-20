@@ -38,7 +38,7 @@ const [email, setEmail] = useState("")
         // Save token to localStorage
         localStorage.setItem("token", result.token)
         localStorage.setItem("user", JSON.stringify(result.user))
-        
+        alert("connection réussie")
         // Redirect to dashboard
         window.location.href = "/dashboard"
       } else {
