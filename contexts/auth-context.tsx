@@ -10,19 +10,19 @@ interface User {
   lastName: string
   company?: string
   avatar?: string
-  theme: "light" | "dark" | "system"
-  preferences: {
-    notifications: boolean
-    emailUpdates: boolean
-    language: string
-  }
+  // theme: "light" | "dark" | "system"
+  // preferences: {
+  //   notifications: boolean
+  //   emailUpdates: boolean
+  //   language: string
+  // }
 }
 
 interface AuthContextType {
   user: User | null
   isLoading: boolean
-  login: (email: string, password: string) => Promise<void>
-  signup: (userData: any) => Promise<void>
+  login: (email: string, password: string) => Promise<{ success: boolean; message?: string }>
+  signup: (userData: any) => Promise<{ success: boolean; message?: string }>
   logout: () => void
   updateUser: (userData: Partial<User>) => void
   updateTheme: (theme: "light" | "dark" | "system") => void
@@ -34,79 +34,119 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  // Simulate checking for existing session on mount
+  // Check for existing session on mount
   useEffect(() => {
     const checkAuth = () => {
-      const savedUser = localStorage.getItem("nrbtech_user")
-      if (savedUser) {
-        setUser(JSON.parse(savedUser))
+      try {
+        const savedUser = localStorage.getItem("user")
+        const token = localStorage.getItem("token")
+        
+        if (savedUser && token) {
+          setUser(JSON.parse(savedUser))
+        }
+      } catch (error) {
+        console.error("Error parsing user data from localStorage:", error)
+        // Clear invalid data
+        localStorage.removeItem("user")
+        localStorage.removeItem("token")
+      } finally {
+        setIsLoading(false)
       }
-      setIsLoading(false)
     }
 
     checkAuth()
   }, [])
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, password: string): Promise<{ success: boolean; message?: string }> => {
     setIsLoading(true)
+    
+    try {
+      const response = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      })
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+      const result = await response.json()
 
-    const mockUser: User = {
-      id: "1",
-      email,
-      firstName: "John",
-      lastName: "Doe",
-      company: "Tech Corp",
-      theme: "system",
-      preferences: {
-        notifications: true,
-        emailUpdates: true,
-        language: "fr",
-      },
+      if (result.success) {
+        const userData = {
+          id: result.user.id,
+          email: result.user.email,
+          firstName: result.user.firstName,
+          lastName: result.user.lastName,
+          company: result.user.company || "",
+          // theme: "system",
+          // preferences: {
+          //   notifications: true,
+          //   emailUpdates: true,
+          //   language: "fr",
+          // },
+        }
+
+        setUser(userData)
+        localStorage.setItem("user", JSON.stringify(userData))
+        localStorage.setItem("token", result.token)
+        
+        return { success: true }
+      } else {
+        return { success: false, message: result.message }
+      }
+    } catch (error) {
+      console.error("Login error:", error)
+      return { success: false, message: "Erreur de connexion au serveur" }
+    } finally {
+      setIsLoading(false)
     }
-
-    setUser(mockUser)
-    localStorage.setItem("nrbtech_user", JSON.stringify(mockUser))
-    setIsLoading(false)
   }
 
-  const signup = async (userData: any) => {
+  const signup = async (userData: any): Promise<{ success: boolean; message?: string }> => {
     setIsLoading(true)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      })
 
-    const newUser: User = {
-      id: Date.now().toString(),
-      email: userData.email,
-      firstName: userData.firstName,
-      lastName: userData.lastName,
-      company: userData.company,
-      theme: "system",
-      preferences: {
-        notifications: true,
-        emailUpdates: true,
-        language: "fr",
-      },
+      const result = await response.json()
+
+      if (result.success) {
+        // After successful signup, automatically log the user in
+        const loginResult = await login(userData.email, userData.password)
+        return loginResult
+      } else {
+        return { success: false, message: result.message }
+      }
+    } catch (error) {
+      console.error("Signup error:", error)
+      return { success: false, message: "Erreur de connexion au serveur" }
+    } finally {
+      setIsLoading(false)
     }
-
-    setUser(newUser)
-    localStorage.setItem("nrbtech_user", JSON.stringify(newUser))
-    setIsLoading(false)
   }
 
   const logout = () => {
     setUser(null)
-    localStorage.removeItem("nrbtech_user")
+    localStorage.removeItem("user")
+    localStorage.removeItem("token")
+    
+    // Redirect to home page after logout
+    if (typeof window !== "undefined") {
+      window.location.href = "/"
+    }
   }
 
   const updateUser = (userData: Partial<User>) => {
     if (user) {
       const updatedUser = { ...user, ...userData }
       setUser(updatedUser)
-      localStorage.setItem("nrbtech_user", JSON.stringify(updatedUser))
+      localStorage.setItem("user", JSON.stringify(updatedUser))
     }
   }
 
@@ -114,8 +154,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (user) {
       const updatedUser = { ...user, theme }
       setUser(updatedUser)
-      localStorage.setItem("nrbtech_user", JSON.stringify(updatedUser))
+      localStorage.setItem("user", JSON.stringify(updatedUser))
     }
+    
+    // Also update the theme in the theme provider if you have one
+    document.documentElement.classList.toggle("dark", theme === "dark")
   }
 
   return (
