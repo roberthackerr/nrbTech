@@ -13,11 +13,17 @@ export async function GET(request: NextRequest) {
       .sort({ createdAt: -1 })
       .toArray()
 
+    // Headers pour éviter le cache
+    const headers = {
+      'Cache-Control': 'no-store, max-age=0',
+      'Pragma': 'no-cache'
+    }
+
     return NextResponse.json({
       success: true,
       data: submissions,
       count: submissions.length
-    })
+    }, { headers })
   } catch (error) {
     console.error("Error fetching submissions:", error)
     return NextResponse.json(
