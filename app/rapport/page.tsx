@@ -7,7 +7,6 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { 
   Search, 
-  Filter, 
   Download, 
   Mail, 
   Phone, 
@@ -43,18 +42,31 @@ export default function Rapport() {
   const [selectedSubmission, setSelectedSubmission] = useState<ContactSubmission | null>(null)
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
 
-  useEffect(() => {
-    fetchSubmissions()
-  }, [])
-
   const fetchSubmissions = async () => {
     try {
       setLoading(true)
-      const response = await fetch("/api/contact/submissions")
+      // Ajouter un timestamp unique pour éviter le cache
+      const timestamp = new Date().getTime()
+      const response = await fetch(`/api/contact/submissions?t=${timestamp}`, {
+        method: 'GET',
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache'
+        },
+        cache: 'no-store' // Important pour Next.js
+      })
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      
       const data = await response.json()
       if (data.success) {
         setSubmissions(data.data)
         setLastUpdated(new Date())
+        console.log(`Données mises à jour: ${data.data.length} soumissions`)
+      } else {
+        console.error("Erreur API:", data.message)
       }
     } catch (error) {
       console.error("Error fetching submissions:", error)
@@ -64,8 +76,13 @@ export default function Rapport() {
     }
   }
 
+  useEffect(() => {
+    fetchSubmissions()
+  }, [])
+
   const handleRefresh = async () => {
     setRefreshing(true)
+    console.log("Actualisation manuelle...")
     await fetchSubmissions()
   }
 
@@ -136,7 +153,6 @@ export default function Rapport() {
       <Navigation />
       
       <div className="container mx-auto px-4 py-8">
-        {/* Header */}
         <header className="text-center mb-8">
           <div className="py-8">
             <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
