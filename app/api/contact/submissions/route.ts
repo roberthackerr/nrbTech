@@ -1,3 +1,4 @@
+// app/api/contact/submissions/route.ts
 import { NextRequest, NextResponse } from "next/server"
 import clientPromise from "@/lib/mongodb"
 
@@ -7,16 +8,18 @@ export async function GET(request: NextRequest) {
     const database = client.db("contactFormDB")
     const collection = database.collection("submissions")
     
-    // Récupérer toutes les soumissions triées par date (plus récent en premier)
     const submissions = await collection
       .find({})
       .sort({ createdAt: -1 })
       .toArray()
 
-    // Headers pour éviter le cache
+    // Headers spécifiques pour Vercel
     const headers = {
-      'Cache-Control': 'no-store, max-age=0',
-      'Pragma': 'no-cache'
+      'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+      'CDN-Cache-Control': 'no-cache',
+      'Vercel-CDN-Cache-Control': 'no-cache'
     }
 
     return NextResponse.json({
