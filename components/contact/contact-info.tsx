@@ -41,7 +41,7 @@ export function ContactInfo() {
           <div className="flex items-center space-x-3">
             <Mail className="h-4 w-4 text-primary" />
             <div>
-              <p className="font-medium">contact@nrbtech.fr</p>
+              <p className="font-medium">contact@nrbtech.com</p>
               <p className="text-sm text-muted-foreground">Réponse sous 24h garantie</p>
             </div>
           </div>
