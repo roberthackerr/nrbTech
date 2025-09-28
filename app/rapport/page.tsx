@@ -16,7 +16,8 @@ import {
   Calendar,
   User,
   DollarSign,
-  Layers
+  Layers,
+  RefreshCw
 } from "lucide-react"
 import { useEffect, useState } from "react"
 
@@ -36,9 +37,11 @@ interface ContactSubmission {
 export default function Rapport() {
   const [submissions, setSubmissions] = useState<ContactSubmission[]>([])
   const [loading, setLoading] = useState(true)
+  const [refreshing, setRefreshing] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
   const [selectedSubmission, setSelectedSubmission] = useState<ContactSubmission | null>(null)
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
 
   useEffect(() => {
     fetchSubmissions()
@@ -46,16 +49,24 @@ export default function Rapport() {
 
   const fetchSubmissions = async () => {
     try {
+      setLoading(true)
       const response = await fetch("/api/contact/submissions")
       const data = await response.json()
       if (data.success) {
         setSubmissions(data.data)
+        setLastUpdated(new Date())
       }
     } catch (error) {
       console.error("Error fetching submissions:", error)
     } finally {
       setLoading(false)
+      setRefreshing(false)
     }
+  }
+
+  const handleRefresh = async () => {
+    setRefreshing(true)
+    await fetchSubmissions()
   }
 
   const filteredSubmissions = submissions.filter(submission => {
@@ -106,7 +117,7 @@ export default function Rapport() {
     URL.revokeObjectURL(url)
   }
 
-  if (loading) {
+  if (loading && !refreshing) {
     return (
       <div className="min-h-screen bg-background">
         <Navigation />
@@ -134,6 +145,11 @@ export default function Rapport() {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Gérez et analysez toutes les soumissions de formulaire de contact
             </p>
+            {lastUpdated && (
+              <p className="text-sm text-muted-foreground mt-2">
+                Dernière mise à jour: {lastUpdated.toLocaleTimeString('fr-FR')}
+              </p>
+            )}
           </div>
         </header>
 
@@ -199,6 +215,15 @@ export default function Rapport() {
                     />
                   </div>
                   <div className="flex gap-2">
+                    <Button 
+                      variant="outline" 
+                      onClick={handleRefresh}
+                      disabled={refreshing}
+                      className="flex items-center gap-2"
+                    >
+                      <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
+                      {refreshing ? 'Actualisation...' : 'Actualiser'}
+                    </Button>
                     <Button variant="outline" onClick={exportToCSV}>
                       <Download className="h-4 w-4 mr-2" />
                       Exporter
@@ -211,10 +236,29 @@ export default function Rapport() {
             {/* Liste des soumissions */}
             <Card>
               <CardHeader>
-                <CardTitle>Soumissions de Contact</CardTitle>
-                <CardDescription>
-                  {filteredSubmissions.length} résultat(s) trouvé(s)
-                </CardDescription>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div>
+                    <CardTitle>Soumissions de Contact</CardTitle>
+                    <CardDescription>
+                      {filteredSubmissions.length} résultat(s) trouvé(s)
+                      {lastUpdated && (
+                        <span className="ml-2">
+                          • Mis à jour à {lastUpdated.toLocaleTimeString('fr-FR')}
+                        </span>
+                      )}
+                    </CardDescription>
+                  </div>
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    onClick={handleRefresh}
+                    disabled={refreshing}
+                    className="flex items-center gap-2 w-fit"
+                  >
+                    <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
+                    Actualiser
+                  </Button>
+                </div>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -289,6 +333,15 @@ export default function Rapport() {
                       <p className="text-muted-foreground">
                         Aucune donnée ne correspond à vos critères de recherche.
                       </p>
+                      <Button 
+                        onClick={handleRefresh} 
+                        variant="outline" 
+                        className="mt-4"
+                        disabled={refreshing}
+                      >
+                        <RefreshCw className={`h-4 w-4 mr-2 ${refreshing ? 'animate-spin' : ''}`} />
+                        Actualiser les données
+                      </Button>
                     </div>
                   )}
                 </div>
@@ -312,13 +365,23 @@ export default function Rapport() {
                       Soumission du {new Date(selectedSubmission.createdAt).toLocaleDateString('fr-FR')}
                     </CardDescription>
                   </div>
-                  <Button 
-                    variant="ghost" 
-                    size="sm"
-                    onClick={() => setSelectedSubmission(null)}
-                  >
-                    ✕
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={handleRefresh}
+                      disabled={refreshing}
+                    >
+                      <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
+                    </Button>
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      onClick={() => setSelectedSubmission(null)}
+                    >
+                      ✕
+                    </Button>
+                  </div>
                 </div>
               </CardHeader>
               <CardContent className="p-6 overflow-y-auto">
