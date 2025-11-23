@@ -56,6 +56,16 @@ export default function TeamPage() {
       email: "rahaja.ranjanirina@gmail.com",
       linkedin: "#",
       github: "#",
+    },
+            {
+      name: "Eric",
+      role: "Directeur",
+      bio: " Télécommunications ",
+      image: "/ai-developer-portrait.png",
+      skills: ["Développeur","Informatique"],
+      email: "eric123@gmail.com",
+      linkedin: "#",
+      github: "#",
     }
   ]
 
