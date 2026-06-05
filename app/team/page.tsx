@@ -7,6 +7,7 @@ import { Navigation } from "@/components/navigation"
 
 export default function TeamPage() {
   const team = [
+
     {
       name: "RAZAFIMANDIMBY Tojo Herifaratahina Robertolinos",
       role: "CEO & Fondateur",
@@ -14,6 +15,17 @@ export default function TeamPage() {
       image: "/Robertolinos.jpg",
       skills: ["Leadership", "Stratégie", "Télécoms", "Innovation","Informatique"],
       email: "tojolinos@gmail.com",
+      linkedin: "#",
+      github: "#",
+    },
+    
+        {
+      name: "Nomena Koloina RANDRIAMPARANY ",
+      role: "Sales & Marketing",
+      bio: "Responsable Communication et Relation publique , Business women et experte en  Marketing",
+      image: "/Nomena.jpg",
+      skills: ["Informatique bureautique ", "Rédaction claire et soignée", "Stratégies de communication", "Art d'éloquence","gestion de projet","Organisation"],
+      email: "#",
       linkedin: "#",
       github: "#",
     },
