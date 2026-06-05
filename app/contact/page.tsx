@@ -19,7 +19,7 @@ export default function ContactPage() {
       title: "Email",
       description: "Écrivez-nous",
       value: "contact@nrbtech.com",
-      action: "mailto:contact@nrbtech.com",
+      action: "mailto:contact@nrbtech.site",
     },
     {
       icon: MessageSquare,
