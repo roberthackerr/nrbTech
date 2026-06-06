@@ -59,6 +59,16 @@ export default function TeamPage() {
       linkedin: "#",
       github: "#",
     },
+        {
+      name: "RAKOTOARISON Todisoa Josoa Fitahiana",
+      role: " Developer Python",
+      bio: "Web Developer",
+      image: "/joso.jpg",
+      skills: ["Python","Mysql","Django","Data entry"],
+      email: "",
+      linkedin: "#",
+      github: "#",
+    },
     {
       name: "RANJANIRINA Rahaja",
       role: "Developer PHP",
