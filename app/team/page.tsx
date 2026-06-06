@@ -43,10 +43,10 @@ export default function TeamPage() {
       name: "RASOLOMANDIMBY Tafita Nantenaina",
       role: "Developer",
       bio: "Web Developer et expert en Télécommunication ",
-      image: "/Nantenaina.jpg",
-      skills: ["Télécoms","Informatique"],
+      image: "/nantenaina.jpeg",
+      skills: ["Télécoms","Informatique","Mongodb","Express","React","Node","Nextjs","NestJs","Java","MySQL","PostgreSQL"],
       email: "tafitanantenaina.ras@gmail.com",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/nantenaina-rasolomandimby",
       github: "#",
     },
     {

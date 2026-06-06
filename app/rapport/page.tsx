@@ -111,8 +111,7 @@ export default function Rapport() {
   const exportToCSV = () => {
     const headers = ["Nom", "Email", "Entreprise", "Service", "Budget", "Téléphone", "Statut", "Date"]
     const csvData = filteredSubmissions.map(sub => [
-      sub.name,
-      sub.email,
+      sub.name,é
       sub.company,
       sub.service,
       sub.budget,
