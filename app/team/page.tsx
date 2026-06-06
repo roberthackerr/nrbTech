@@ -12,7 +12,7 @@ export default function TeamPage() {
       name: "RAZAFIMANDIMBY Tojo Herifaratahina Robertolinos",
       role: "CEO & Fondateur",
       bio: "Expert en télécommunications et informatique avec plus de 3 ans d'expérience dans l'industrie tech.",
-      image: "/Robertolinos.jpg",
+      image: "/roberto.jpg",
       skills: ["Leadership", "Stratégie", "Télécoms", "Innovation","Informatique"],
       email: "tojolinos@gmail.com",
       linkedin: "#",
