@@ -53,7 +53,7 @@ export default function TeamPage() {
       name: "RAMAROSON Sitrakiniaina Mbolatiana",
       role: " Developer Python",
       bio: "Web Developer et expert en Télécommunication ",
-      image: "/ai-developer-portrait.png",
+      image: "/sitraka.jpeg",
       skills: ["Html","Css","Python","Mysql","MERN"],
       email: "",
       linkedin: "#",
