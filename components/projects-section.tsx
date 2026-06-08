@@ -11,7 +11,7 @@ const projects = [
     title: "NRBTalents",
     description:
       "Plateforme de mise en relation entre talents, recruteurs et entreprises développée par l'équipe NRBTech.",
-    image: "/projects/nrbtalents.jpg",
+    image: "/projects/nrbtalents.jpeg",
     technologies: ["Next.js", "Spring Boot", "MongoDB"],
     category: "Plateforme Web",
     status: "En production",
@@ -21,7 +21,7 @@ const projects = [
     title: "Portfolio NRBTech",
     description:
       "Site vitrine présentant les services, l'équipe et les projets de l'entreprise.",
-    image: "/projects/nrbtech.jpg",
+    image: "/projects/nrbtech.jpeg",
     technologies: ["Next.js", "Tailwind CSS"],
     category: "Développement Web",
     status: "En ligne",
