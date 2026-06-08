@@ -74,7 +74,7 @@ export default function TeamPage() {
       role: "Developer PHP",
       bio: "Web Developer et expert en télécommunications, informatique, développement PHP en CRM  ",
       image: "/rahaja.jpeg",
-      skills: ["Html","Css","Laravel","Python","Mysql","Sql"],
+      skills: ["Html","Css","Laravel","Python","Mysql","Sql","télécoms"],
       email: "rahaja.ranjanirina@gmail.com",
       linkedin: "#",
       github: "#",
