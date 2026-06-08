@@ -34,7 +34,7 @@ export function ContactInfo() {
           <div className="flex items-center space-x-3">
             <Phone className="h-4 w-4 text-primary" />
             <div>
-              <p className="font-medium">+261 33 326 42</p>
+              <p className="font-medium">+261 33 33 326 42</p>
               <p className="text-sm text-muted-foreground">Support 24/7 disponible</p>
             </div>
           </div>
