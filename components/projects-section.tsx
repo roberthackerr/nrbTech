@@ -8,69 +8,23 @@ import { ExternalLink, Github } from "lucide-react"
 const projects = [
   {
     id: 1,
-    title: "Plateforme E-commerce Sécurisée",
+    title: "NRBTalents",
     description:
-      "Solution complète de commerce électronique avec système de paiement intégré et protection anti-fraude avancée.",
-    image: "/modern-ecommerce-dashboard.png",
-    technologies: ["React", "Node.js", "PostgreSQL", "Stripe", "AWS"],
-    category: "Développement Web",
-    client: "RetailTech Solutions",
-    duration: "4 mois",
+      "Plateforme de mise en relation entre talents, recruteurs et entreprises développée par l'équipe NRBTech.",
+    image: "/projects/nrbtalents.jpg",
+    technologies: ["Next.js", "Spring Boot", "MongoDB"],
+    category: "Plateforme Web",
+    status: "En production",
   },
   {
     id: 2,
-    title: "Infrastructure Réseau 5G",
+    title: "Portfolio NRBTech",
     description:
-      "Déploiement d'infrastructure 5G pour opérateur télécom avec optimisation de couverture et gestion intelligente du trafic.",
-    image: "/5g-network-infrastructure-towers.jpg",
-    technologies: ["5G", "SDN", "NFV", "Kubernetes", "OpenStack"],
-    category: "Télécommunications",
-    client: "TelecomCorp",
-    duration: "8 mois",
-  },
-  {
-    id: 3,
-    title: "Système de Détection d'Intrusion IA",
-    description:
-      "Solution de cybersécurité basée sur l'IA pour détecter et prévenir les menaces en temps réel avec analyse comportementale.",
-    image: "/cybersecurity-ai-dashboard-with-threat-detection.jpg",
-    technologies: ["Python", "TensorFlow", "Elasticsearch", "Kibana", "Docker"],
-    category: "Cybersécurité",
-    client: "SecureBank",
-    duration: "6 mois",
-  },
-  {
-    id: 4,
-    title: "Assistant IA Conversationnel",
-    description:
-      "Chatbot intelligent multilingue avec traitement du langage naturel pour service client automatisé 24/7.",
-    image: "/ai-chatbot-interface-conversation.jpg",
-    technologies: ["GPT-4", "Python", "FastAPI", "Redis", "WebSocket"],
-    category: "Intelligence Artificielle",
-    client: "CustomerFirst",
-    duration: "3 mois",
-  },
-  {
-    id: 5,
-    title: "Application Mobile IoT",
-    description:
-      "Application de contrôle et monitoring d'objets connectés pour la domotique avec interface intuitive et sécurisée.",
-    image: "/iot-smart-home-mobile-app-interface.jpg",
-    technologies: ["React Native", "MQTT", "InfluxDB", "Node.js", "Firebase"],
-    category: "Développement Mobile",
-    client: "SmartHome Inc",
-    duration: "5 mois",
-  },
-  {
-    id: 6,
-    title: "Plateforme Analytics Big Data",
-    description:
-      "Solution d'analyse de données massives en temps réel avec tableaux de bord interactifs et prédictions IA.",
-    image: "/big-data-analytics-dashboard-charts.jpg",
-    technologies: ["Apache Spark", "Kafka", "Hadoop", "D3.js", "Python"],
-    category: "Data Science",
-    client: "DataCorp Analytics",
-    duration: "7 mois",
+      "Site vitrine présentant les services, l'équipe et les projets de l'entreprise.",
+    image: "/projects/nrbtech.jpg",
+    technologies: ["Next.js", "Tailwind CSS"],
+    category: "Développement Web",
+    status: "En ligne",
   },
 ]
 
@@ -110,8 +64,8 @@ export function ProjectsSection() {
                 </h3>
                 <p className="text-gray-600 mb-4 text-sm leading-relaxed">{project.description}</p>
 
-                <div className="space-y-3 mb-4">
-                  <div className="flex items-center text-sm text-gray-500">
+                {/* <div className="space-y-3 mb-4">
+                  <div className="flex items-center, text-sm text-gray-500">
                     <span className="font-medium">Client:</span>
                     <span className="ml-2">{project.client}</span>
                   </div>
@@ -119,7 +73,7 @@ export function ProjectsSection() {
                     <span className="font-medium">Durée:</span>
                     <span className="ml-2">{project.duration}</span>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.slice(0, 3).map((tech) => (
